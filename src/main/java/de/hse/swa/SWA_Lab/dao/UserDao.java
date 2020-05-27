@@ -3,7 +3,6 @@ package de.hse.swa.SWA_Lab.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import de.hse.swa.SWA_Lab.model.Swauser;
