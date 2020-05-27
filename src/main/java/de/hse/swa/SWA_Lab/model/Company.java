@@ -1,4 +1,4 @@
-package de.hse.swa.SWA_Lab;
+package de.hse.swa.SWA_Lab.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
