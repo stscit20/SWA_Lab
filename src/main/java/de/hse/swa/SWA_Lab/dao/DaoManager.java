@@ -9,7 +9,7 @@ public class DaoManager {
 	private static DaoManager dm;
 	private static EntityManager em;
 	
-	private static final String PERSISTENCE_UNIT_NAME = "jodel";
+	private static final String PERSISTENCE_UNIT_NAME = "SWA_LabTest";
 	private static EntityManagerFactory factory;
 
 	private DaoManager() {

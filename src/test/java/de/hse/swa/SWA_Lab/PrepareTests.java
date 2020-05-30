@@ -50,6 +50,26 @@ public class PrepareTests {
 		}
 		et.commit();
 		et.begin();
+		
+		// Begin SQL Queries
+		
+		// Insert into Company
+		em.createNativeQuery("INSERT INTO company (idcompany, companyname, department, address) VALUES (1, 'Riot Games', 'USA', 'saltystreet 5')").executeUpdate();
+		
+		// USER
+		em.createNativeQuery("INSERT INTO swauser (iduser, username, email, password, first_name, last_name, is_admin, company_idcompany) Values "
+				+ "(1, 'xXBananaExpress', 'BananaExpress@gmail.com', 'test123', 'Hans', 'Peter', 1, 1)").executeUpdate();
+		
+		// INSERT into servicecontract
+		em.createNativeQuery("INSERT INTO servicecontract (idservicecontract, startdate, enddate, company_idcompany, user_iduser) VALUES"
+				+ " (1, '2021-09-01 10:10:10', '2022-09-01 10:10:10', 1, 1)" ).executeUpdate();		
+		
+		// Insert into License
+		em.createNativeQuery("INSERT INTO license (idlicense, expirationdate, licensekey, IP1, IP2, IP3, IP4, licensecount, servicecontract_idservicecontract)"
+				+ "VALUES (1, '2020-09-01 10:10:10', 'licensekey', '127.0.0.1', '10.20.131.103', '10.20.131.198', '192.168.178.24', 5, 1)").executeUpdate();
+		
+		
+		
 		et.commit();
 		
 	}

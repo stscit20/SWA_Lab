@@ -27,6 +27,13 @@ public class UserDao {
 		return em.find(Swauser.class, id);
 	}
 	
+	public List<Swauser> getUsersByCompanyId(Integer id){
+		Query q = em.createQuery("select u from swauser u where u.company_idcompany = :cid");
+		q.setParameter("cid", CompanyDao.getInstance().getCompany(id));
+		List<Swauser> users = q.getResultList();
+		return users;
+	}
+	
 	public List<Swauser> getSwausers() {
 		Query q = em.createQuery("select c from Swauser c");
 		List<Swauser> users = q.getResultList();
