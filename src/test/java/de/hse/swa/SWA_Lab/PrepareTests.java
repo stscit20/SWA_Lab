@@ -21,6 +21,32 @@ public class PrepareTests {
 		et = em.getTransaction();
 		et.begin();
 		
+
+		try {
+			em.createNativeQuery("DELETE FROM license").executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+		
+		try {
+			em.createNativeQuery("DELETE FROM servicecontract").executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+		
+		try {
+			em.createNativeQuery("DELETE FROM swauser").executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			em.createNativeQuery("DELETE FROM company").executeUpdate();
 		}
@@ -28,27 +54,11 @@ public class PrepareTests {
 			e.printStackTrace();
 		}
 		
-		try {
-			em.createNamedQuery("Delete FROM license").executeUpdate();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			em.createNamedQuery("DELETE FROM servicecontract").executeUpdate();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			em.createNamedQuery("DELETE FROM swauser").executeUpdate();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 		et.commit();
+		
+		
+
+		et = em.getTransaction();
 		et.begin();
 		
 		// Begin SQL Queries

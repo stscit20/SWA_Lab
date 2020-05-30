@@ -9,6 +9,11 @@
 		
 	</persistence-unit>
 	<persistence-unit name="SWA_LabTest">
+		<class>de.hse.swa.SWA_Lab.model.Company</class>
+		<class>de.hse.swa.SWA_Lab.model.License</class>
+		<class>de.hse.swa.SWA_Lab.model.LicensePK</class>
+		<class>de.hse.swa.SWA_Lab.model.Servicecontract</class>
+		<class>de.hse.swa.SWA_Lab.model.Swauser</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -11,10 +11,10 @@ import de.hse.swa.SWA_Lab.dao.*;
 @SuiteClasses({
 	// Test classes
 	DaoManagerTest.class,
-	CompanyDaoTest.class,
 	LicenseDaoTest.class,
 	ServicecontractDaoTest.class,
-	SwauserDaoTest.class	
+	SwauserDaoTest.class,	
+	CompanyDaoTest.class
 })
 
 public class AllTests {

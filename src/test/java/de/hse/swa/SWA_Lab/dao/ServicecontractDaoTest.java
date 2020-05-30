@@ -45,7 +45,8 @@ public class ServicecontractDaoTest {
 	public void tearDown() throws Exception {
 	}
 	
-	@Test void testGetInstance() {
+	@Test 
+	public void testGetInstance() {
 		ServicecontractDao s = ServicecontractDao.getInstance();
 		assertNotNull(s);
 	}
