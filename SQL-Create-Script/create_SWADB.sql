@@ -24,7 +24,7 @@ USE `SWADB` ;
 DROP TABLE IF EXISTS `SWADB`.`company` ;
 
 CREATE TABLE IF NOT EXISTS `SWADB`.`company` (
-  `idcompany` INT NOT NULL,
+  `idcompany` INT AUTO_INCREMENT,
   `companyname` VARCHAR(45) NULL,
   `department` VARCHAR(45) NULL,
   `address` VARCHAR(45) NULL,
@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `SWADB`.`swauser` ;
 
 CREATE TABLE IF NOT EXISTS `SWADB`.`swauser` (
-  `iduser` INT NOT NULL,
+  `iduser` INT AUTO_INCREMENT,
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `SWADB`.`swauser` (
 DROP TABLE IF EXISTS `SWADB`.`servicecontract` ;
 
 CREATE TABLE IF NOT EXISTS `SWADB`.`servicecontract` (
-  `idservicecontract` INT NOT NULL,
+  `idservicecontract` INT AUTO_INCREMENT,
   `startdate` DATETIME NULL,
   `enddate` DATETIME NULL,
   `company_idcompany` INT NOT NULL,
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `SWADB`.`license` ;
 
 CREATE TABLE IF NOT EXISTS `SWADB`.`license` (
-  `idlicense` INT NOT NULL,
+  `idlicense` INT AUTO_INCREMENT,
   `expirationdate` DATETIME NULL,
   `licensekey` VARCHAR(45) NULL,
   `IP1` VARCHAR(45) NULL,

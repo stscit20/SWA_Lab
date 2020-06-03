@@ -43,7 +43,7 @@ public class ServicecontractDaoTest {
 
 	@After
 	public void tearDown() throws Exception {
-	}
+	} 
 	
 	@Test 
 	public void testGetInstance() {
