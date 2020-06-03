@@ -57,7 +57,7 @@ public class PrepareTests {
 		et.commit();
 		
 		
-
+/*
 		et = em.getTransaction();
 		et.begin();
 		
@@ -80,7 +80,7 @@ public class PrepareTests {
 		
 		
 		
-		et.commit();
+		et.commit();*/
 		
 	}
 }

@@ -21,6 +21,9 @@
 				value="jdbc:mysql://localhost:3306/SWADB?serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.user" value="admin" />
 			<property name="javax.persistence.jdbc.password" value="admin" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+					  value="database" />
 		</properties>
 	</persistence-unit>
 </persistence>
