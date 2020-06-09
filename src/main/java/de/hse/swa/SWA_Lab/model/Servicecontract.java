@@ -10,14 +10,17 @@ import java.util.List;
  * The persistent class for the servicecontract database table.
  * 
  */
+
 @Entity
 @Table(name="servicecontract")
 @NamedQuery(name="Servicecontract.findAll", query="SELECT s FROM Servicecontract s")
 public class Servicecontract implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+ 
 	@Id
+   
 	@GeneratedValue(strategy=GenerationType.TABLE)
+	 
 	private int idservicecontract;
 
 	@Temporal(TemporalType.TIMESTAMP)

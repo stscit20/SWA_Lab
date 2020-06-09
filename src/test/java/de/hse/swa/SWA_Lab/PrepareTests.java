@@ -55,14 +55,14 @@ public class PrepareTests {
 		}
 		
 		et.commit();
+	
 		
-		
-/*
+
 		et = em.getTransaction();
 		et.begin();
 		
 		// Begin SQL Queries
-		
+/*		
 		// Insert into Company
 		em.createNativeQuery("INSERT INTO company (idcompany, companyname, department, address) VALUES (1, 'Riot Games', 'USA', 'saltystreet 5')").executeUpdate();
 		
@@ -78,9 +78,9 @@ public class PrepareTests {
 		em.createNativeQuery("INSERT INTO license (idlicense, expirationdate, licensekey, IP1, IP2, IP3, IP4, licensecount, servicecontract_idservicecontract)"
 				+ "VALUES (1, '2020-09-01 10:10:10', 'licensekey', '127.0.0.1', '10.20.131.103', '10.20.131.198', '192.168.178.24', 5, 1)").executeUpdate();
 		
+*/
 		
-		
-		et.commit();*/
+		et.commit();
 		
 	}
 }

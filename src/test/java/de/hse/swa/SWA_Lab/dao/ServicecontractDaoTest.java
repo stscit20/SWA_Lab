@@ -96,7 +96,7 @@ public class ServicecontractDaoTest {
 			LicenseDao l = LicenseDao.getInstance();
 			List<License> licenses = l.getLicensesById(servicecontract.getIdservicecontract());
 			for (License license: licenses) {
-				l.deleteLicense(license.getId().getIdlicense());
+				l.deleteLicense(license.getId());
 			}
 			s.deleteServicecontract(servicecontract.getIdservicecontract());
 		}

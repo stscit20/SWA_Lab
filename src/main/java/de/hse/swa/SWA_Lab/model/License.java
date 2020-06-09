@@ -14,9 +14,13 @@ import java.util.Date;
 @NamedQuery(name="License.findAll", query="SELECT l FROM License l")
 public class License implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Id	
+	@TableGenerator( name = "licenseSeq", table = "SEQUENCE", 
+					pkColumnName = "SEQ_NAME", pkColumnValue = "license", 
+					valueColumnName = "SEQ_COUNT", initialValue = 1, allocationSize = 1 )
+    @GeneratedValue( strategy = GenerationType.TABLE, generator = "licenseSeq" )
+	private int idlicense;
 
-	@EmbeddedId
-	private LicensePK id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date expirationdate;
@@ -44,12 +48,12 @@ public class License implements Serializable {
 	public License() {
 	}
 
-	public LicensePK getId() {
-		return this.id;
+	public int getId() {
+		return this.idlicense;
 	}
 
-	public void setId(LicensePK id) {
-		this.id = id;
+	public void setId(int id) {
+		this.idlicense = id;
 	}
 
 	public Date getExpirationdate() {

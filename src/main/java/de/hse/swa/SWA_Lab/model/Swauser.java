@@ -17,7 +17,7 @@ public class Swauser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue( strategy = GenerationType.TABLE )
 	private int iduser;
 
 	@Column(name="create_time")

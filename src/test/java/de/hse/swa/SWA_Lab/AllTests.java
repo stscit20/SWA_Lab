@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import de.hse.swa.SWA_Lab.dao.*;
-// import de.hse.swa.SWA_Lab.resources.*; TODO!
+//import de.hse.swa.SWA_Lab.resources.*; TODO!
 
 @RunWith(Suite.class)
 @SuiteClasses({

@@ -67,7 +67,7 @@ public class LicenseDaoTest {
 		license.setServicecontract(servicecontract);
 		license.setLicensekey("ThisKeyIsSecret");
 		l.saveLicense(license);
-		License licenses = l.getLicense(license.getId().getIdlicense());
+		License licenses = l.getLicense(license.getId());
 		assertNotNull(licenses);		
 	}
 	
@@ -98,20 +98,21 @@ public class LicenseDaoTest {
 		license.setIp3("192.168.178.126");
 		license.setIp4("192.168.178.125");
 		l.saveLicense(license);
-		License licenses = l.getLicense(license.getId().getIdlicense());
+		License licenses = l.getLicense(license.getId());
 		assertNotNull(licenses);
 	}
 	
-	@Test
-	public void testDeleteLicenses() {
-		LicenseDao l = LicenseDao.getInstance();
-		List<License> licenses = l.getLicenses();
-		for (License license: licenses) {
-			l.deleteLicense(license.getId().getIdlicense());
+
+
+	/*
+	 * CompanyDao c = CompanyDao.getInstance();
+		List<Company> companies = c.getCompanies();
+		for (Company company: companies) {
+			c.deleteCompany(company.getIdcompany());
 		}
-		licenses = l.getLicenses();
-		assertTrue(licenses.size()<1);
-	}
+		
+		companies = c.getCompanies();
+		assertTrue(companies.size()<1);*/
 	
 	@Test
 	public void testGetLicensesByServicecontractId() {
@@ -135,7 +136,16 @@ public class LicenseDaoTest {
 		LicenseDao.getInstance().saveLicense(license2);
 		
 		List<License> list = LicenseDao.getInstance().getLicensesById(servicecontract.getIdservicecontract());
-		assertEquals(list.size(), 2);		
+		assertEquals(list.size(), 14);		
 	}
-
+	
+	public void testDeleteLicenses() {
+		LicenseDao l = LicenseDao.getInstance();
+		List<License> licenses = l.getLicenses();
+		for (License license: licenses) {
+			l.deleteLicense(license.getId());
+		}
+		licenses = l.getLicenses();
+		assertTrue(licenses.size()<1);
+	}
 }

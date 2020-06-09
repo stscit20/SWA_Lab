@@ -11,6 +11,12 @@ import javax.persistence.*;
 public class LicensePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@TableGenerator( name = "postLicense", table = "SEQUENCE", 
+    				pkColumnName = "SEQ_NAME", pkColumnValue = "License", 
+    				valueColumnName = "SEQ_COUNT", initialValue = 1, allocationSize = 1 )
+    @GeneratedValue( strategy = GenerationType.TABLE, generator = "postLicense" )
 
 	private int idlicense;
 
