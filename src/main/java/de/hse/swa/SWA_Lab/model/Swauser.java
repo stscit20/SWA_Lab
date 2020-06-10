@@ -38,8 +38,9 @@ public class Swauser implements Serializable {
 
 	private String username;
 
+
 	//bi-directional many-to-one association to Servicecontract
-	@OneToMany(mappedBy="swauser")
+	@OneToMany(mappedBy="swauser",cascade=CascadeType.PERSIST)
 	private List<Servicecontract> servicecontracts;
 
 	//bi-directional many-to-one association to Company
@@ -112,7 +113,8 @@ public class Swauser implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	
+ 
 	public List<Servicecontract> getServicecontracts() {
 		return this.servicecontracts;
 	}

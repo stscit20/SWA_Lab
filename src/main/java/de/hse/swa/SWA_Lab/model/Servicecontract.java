@@ -34,11 +34,11 @@ public class Servicecontract implements Serializable {
 	private List<License> licenses;
 
 	//bi-directional many-to-one association to Company
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Company company;
 
 	//bi-directional many-to-one association to Swauser
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="user_iduser")
 	private Swauser swauser;
 

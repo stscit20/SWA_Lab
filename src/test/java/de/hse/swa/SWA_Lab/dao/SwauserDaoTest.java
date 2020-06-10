@@ -24,8 +24,8 @@ public class SwauserDaoTest {
 		 PrepareTests.initDatabase();
 		 
 		 company = new Company();
-		 company.setIdcompany(1);
 		 company.setCompanyname("TestCompany");
+		 
 		 CompanyDao.getInstance().saveCompany(company);
 		 
 	 }
@@ -68,6 +68,7 @@ public class SwauserDaoTest {
 			 user.setUsername("John Doe sen. "+i);
 			 user.setPassword("test" +i);
 			 user.setCompany(company);
+			
 			 c.saveSwauser(user) ;
 		 }
 		 List<Swauser> users = c.getSwausers();

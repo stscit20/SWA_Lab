@@ -26,11 +26,19 @@ public class ServicecontractDaoTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		PrepareTests.initDatabase();
-		company = new Company();
-		company.setCompanyname("ServiceContract: TEST");
+	    company = new Company();
+		company.setCompanyname("TestCompany");
+		 
+		CompanyDao.getInstance().saveCompany(company);
+		
+		
 		swauser = new Swauser();
-		swauser.setUsername("hans");
-		swauser.setPassword("test123");
+		swauser.setUsername("Test Name");
+		swauser.setPassword("test");
+		swauser.setCompany(company);
+	
+	    UserDao.getInstance().saveSwauser(swauser);
+
 	}
 	
 	@AfterClass

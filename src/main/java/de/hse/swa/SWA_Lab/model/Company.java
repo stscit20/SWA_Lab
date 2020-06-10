@@ -2,6 +2,8 @@ package de.hse.swa.SWA_Lab.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,7 +31,7 @@ public class Company implements Serializable {
 	private String department;
 
 	//bi-directional many-to-one association to Servicecontract
-	@OneToMany(mappedBy="company")
+	@OneToMany(mappedBy="company",cascade=CascadeType.PERSIST)
 	private List<Servicecontract> servicecontracts;
 
 	//bi-directional many-to-one association to Swauser
