@@ -64,6 +64,7 @@ public class CompanyDaoTest {
 		company.setCompanyname("COMPANY TEST: company name");
 		company.setAddress("Saltaddress 1");
 		company.setDepartment("First dep");
+		c.saveCompany(company);
 		// later probably add servicecontracts & users
 		Company companies = c.getCompany(company.getIdcompany());
 		assertNotNull(companies);

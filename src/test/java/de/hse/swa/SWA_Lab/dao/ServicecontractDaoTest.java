@@ -63,6 +63,7 @@ public class ServicecontractDaoTest {
 	public void testGetServicecontract() {
 		ServicecontractDao s = ServicecontractDao.getInstance();
 		Servicecontract servicecontract = new Servicecontract();
+	   
 		servicecontract.setCompany(company);
 		servicecontract.setSwauser(swauser);
 		s.saveServicecontract(servicecontract);
@@ -124,6 +125,7 @@ public class ServicecontractDaoTest {
 		Swauser swauser2 = new Swauser();
 		swauser2.setUsername("hans1");
 		swauser2.setPassword("test1234");
+		swauser2.setCompany(company2);
 		UserDao.getInstance().saveSwauser(swauser2);
 		
 		Servicecontract servicecontract2 = new Servicecontract();
@@ -151,6 +153,7 @@ public class ServicecontractDaoTest {
 		Swauser swauser3 = new Swauser();
 		swauser3.setUsername("hans2");
 		swauser3.setPassword("test12345");
+		swauser3.setCompany(company3);
 		UserDao.getInstance().saveSwauser(swauser3);
 		
 		Servicecontract servicecontract3 = new Servicecontract();

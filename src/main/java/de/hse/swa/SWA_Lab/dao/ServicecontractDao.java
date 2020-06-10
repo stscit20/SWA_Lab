@@ -29,21 +29,21 @@ public class ServicecontractDao {
 	}
 	
 	public List<Servicecontract> getSerivecontractByCompanyId(Integer id){
-		Query q = em.createQuery("select s from servicecontract s where s.company_idcompany = :cid");
+		Query q = em.createQuery("select s from Servicecontract s where s.company = :cid");
 		q.setParameter("cid", CompanyDao.getInstance().getCompany(id));
 		List<Servicecontract> servicecontracts = q.getResultList();
 		return servicecontracts;
 	}
 	
 	public List<Servicecontract> getSerivecontractByUserId(Integer id){
-		Query q = em.createQuery("select s from servicecontract s where s.user_iduser = :uid");
+		Query q = em.createQuery("select s from Servicecontract s where s.swauser = :uid");
 		q.setParameter("uid", UserDao.getInstance().getSwauser(id));
 		List<Servicecontract> servicecontracts = q.getResultList();
 		return servicecontracts;		
 	}
 	
 	public List<Servicecontract> getServicecontracts(){
-		Query q = em.createQuery("select s from servicecontract s");
+		Query q = em.createQuery("select s from Servicecontract s");
 		List<Servicecontract> servicecontracts = q.getResultList();
 		return servicecontracts;
 	}
