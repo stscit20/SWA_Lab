@@ -99,13 +99,12 @@ public void testNewServicecontracts(){
 		servicecontract = new Servicecontract();
 		servicecontract.setCompany(company);
 		servicecontract.setSwauser(swauser);
-	//	ServicecontractDao.getInstance().saveServicecontract(servicecontract);
+	
 		servicecontracts.add(servicecontract);
 	}
 	int count1 = servicecontractsResource.getAllServicecontract().size();
 	
-	//servicecontractsResource.newCompanies(servicecontracts);
-	
+	servicecontractsResource.newServicecontracts(servicecontracts);
 	int count2=servicecontractsResource.getAllServicecontract().size();
 	assertEquals(count2 - servicecontracts.size(),count1);		
 }

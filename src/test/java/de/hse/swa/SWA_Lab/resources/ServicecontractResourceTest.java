@@ -23,8 +23,8 @@ import de.hse.swa.SWA_Lab.PrepareTests;
 import de.hse.swa.SWA_Lab.resources.*;
 
 public class ServicecontractResourceTest {
-private static Servicecontract servicecontract;
-	private static ServicecontractResource servicecontractresource;
+private static Servicecontract servicecontract=null;
+	private static ServicecontractResource servicecontractresource=null;
 	
 	private static Company company = null;
 	private static Swauser swauser = null;
@@ -42,7 +42,7 @@ private static Servicecontract servicecontract;
 	//	swauser.setPassword("test");
 	//	swauser.setCompany(company);
 	
-	    UserDao.getInstance().saveSwauser(swauser);
+	//    UserDao.getInstance().saveSwauser(swauser);
 }
 	
 	
@@ -52,12 +52,13 @@ private static Servicecontract servicecontract;
 
 	@Before
 	public void setUp() throws Exception {
-	
+		PrepareTests.initDatabase();
 	    company = new Company();
 		company.setCompanyname("TestCompany");
 		CompanyDao.getInstance().saveCompany(company);
-		Swauser user =new Swauser();
+		Swauser user = new Swauser();
 		user.setUsername("test");
+		user.setPassword("123");
 		user.setCompany(company);
 		UserDao.getInstance().saveSwauser(user);;
 		servicecontract = new Servicecontract();

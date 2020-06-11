@@ -22,7 +22,7 @@ public class ServicecontractsResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void newCompanies(List<Servicecontract> servicecontracts){
+    public void newServicecontracts(List<Servicecontract> servicecontracts){
         for(Servicecontract servicecontract : servicecontracts) {
             ServicecontractDao.getInstance().saveServicecontract(servicecontract);
         }
