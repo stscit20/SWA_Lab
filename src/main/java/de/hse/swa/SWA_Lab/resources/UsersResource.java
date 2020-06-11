@@ -57,29 +57,13 @@ public class UsersResource extends Application{
   // Use http://localhost:8080/Jodel/rest/users/count
   // to get the total number of records
   @GET
-  @Path("count")
+  @Path("/count")
   @Produces(MediaType.TEXT_PLAIN)
   public String getCount() {
     int count = UserDao.getInstance().getSwausers().size();
     return String.valueOf(count);
   }
-  
- /* @POST
-  @Path("login/facebook")
-  @Produces(MediaType.APPLICATION_JSON)
-  @Consumes(MediaType.APPLICATION_JSON)
-  public Map<String, Object> facebookLogin(Swauser user, @Context HttpServletResponse servletResponse) {
-	//  Swauser checkUser = UserDao.getInstance().getSwauserByFacebookId(user.getFacebookId());
-	  if(checkUser==null) {
-		  UserDao.getInstance().saveSwauser(user);
-		//  checkUser = UserDao.getInstance().getSwauserByFacebookId(user.getFacebookId());
-	  }
-	  Map<String, Object> response = new HashMap<>();
-	  response.put("success", true);
-	  response.put("user", checkUser);
-	  return response;
-  }
-*/
+
   // This is the workhorse
   @POST
   @Produces(MediaType.APPLICATION_JSON)
@@ -94,8 +78,8 @@ public class UsersResource extends Application{
   // treated as a parameter and passed to the UserResources
   // Allows to type http://localhost:8080/Rest/rest/users/1
   // 1 will be treaded as parameter and passed to UserResource
-  @Path("{user}")
-  public UserResource getSwauser(@PathParam("user") Integer id) {
+  @Path("/{id}")
+  public UserResource getSwauser(@PathParam("id") Integer id) {
     return new UserResource(uriInfo, request, id);
   }
 

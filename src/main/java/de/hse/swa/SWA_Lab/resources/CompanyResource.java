@@ -15,7 +15,7 @@ import javax.xml.bind.JAXBElement;
 import de.hse.swa.SWA_Lab.dao.CompanyDao;
 import de.hse.swa.SWA_Lab.model.Company;
 
-@Path("/companies")
+@Path("/company")
 public class CompanyResource {
 	@Context
 	UriInfo uriInfo;
@@ -23,11 +23,11 @@ public class CompanyResource {
 	Request request;
 	Integer id;
 
-	/*public CompanyResource(UriInfo uriInfo, Request request, Integer id) {
+	public CompanyResource(UriInfo uriInfo, Request request, Integer id) {
 		this.uriInfo = uriInfo;
 		this.request = request;
 		this.id = id;
-	}*/
+	}
 
 	//Application integration     
 	@GET
@@ -74,14 +74,6 @@ public class CompanyResource {
 	}
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void newCompanies(List<Company> companies){
-		for(Company company : companies) {
-			CompanyDao.getInstance().saveCompany(company);
-		}
-	}
-
-	@POST
 	@Path("/changeCompany/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void changeCompany(@PathParam("id") Integer id){
@@ -91,27 +83,5 @@ public class CompanyResource {
 		Company c = new Company();
 		c.setIdcompany(id);
 		CompanyDao.getInstance().saveCompany(c);
-	}
-
-
-	/*	Just for test purposes.	*/
-	@GET
-	@Path("/getallcompanies")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<Company> getAllCompanies(){
-		List<Company> companies = CompanyDao.getInstance().getCompanies();
-		if(companies==null)
-			throw new RuntimeException("No Company found!");
-		return companies;
-	}
-	
-	@GET
-	@Path("/getallcompanies")
-	@Produces(MediaType.TEXT_XML)
-	public List<Company> getAllCompaniesHTML(){
-		List<Company> companies = CompanyDao.getInstance().getCompanies();
-		if(companies==null)
-			throw new RuntimeException("No Company found!");
-		return companies;
 	}
 }
