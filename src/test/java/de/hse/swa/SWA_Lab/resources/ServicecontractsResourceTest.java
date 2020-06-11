@@ -35,10 +35,7 @@ public static void setUpBeforeClass() throws Exception {
 	s = ServicecontractDao.getInstance();
     company = new Company();
 	company.setCompanyname("TestCompany");
-	 
 	CompanyDao.getInstance().saveCompany(company);
-	
-	
 	swauser = new Swauser();
 	swauser.setUsername("Test Name");
 	swauser.setPassword("test");
@@ -99,7 +96,6 @@ public void testNewServicecontracts(){
 		servicecontract = new Servicecontract();
 		servicecontract.setCompany(company);
 		servicecontract.setSwauser(swauser);
-	
 		servicecontracts.add(servicecontract);
 	}
 	int count1 = servicecontractsResource.getAllServicecontract().size();

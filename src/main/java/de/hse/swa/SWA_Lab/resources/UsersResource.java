@@ -23,7 +23,9 @@ import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 import javax.servlet.*;
 
+import de.hse.swa.SWA_Lab.dao.CompanyDao;
 import de.hse.swa.SWA_Lab.dao.UserDao;
+import de.hse.swa.SWA_Lab.model.Company;
 import de.hse.swa.SWA_Lab.model.Swauser;
 
 // Will map the resource to the URL users
@@ -65,11 +67,10 @@ public class UsersResource extends Application{
 
   // This is the workhorse
   @POST
-  @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  public List<Swauser> newSwauser(Swauser user,
-		  @Context HttpServletResponse servletResponse) throws IOException {
-    UserDao.getInstance().saveSwauser(user);
-    return UserDao.getInstance().getSwausers();
+  public void newUsers(List<Swauser> users){
+      for(Swauser user : users) {
+          UserDao.getInstance().saveSwauser(user);
+      }
   }
 } 
