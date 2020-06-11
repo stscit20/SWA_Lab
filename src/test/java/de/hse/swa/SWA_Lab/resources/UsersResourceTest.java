@@ -1,24 +1,38 @@
 package de.hse.swa.SWA_Lab.resources;
 
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.core.MediaType;
+
+import de.hse.swa.SWA_Lab.dao.CompanyDao;
+import de.hse.swa.SWA_Lab.model.Company;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.BeforeClass;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
+import org.junit.Test;
 import de.hse.swa.SWA_Lab.PrepareTests;
-import de.hse.swa.SWA_Lab.dao.CompanyDao;
-import de.hse.swa.SWA_Lab.dao.UserDao;
-import de.hse.swa.SWA_Lab.model.Company;
-import de.hse.swa.SWA_Lab.model.*;
+import de.hse.swa.SWA_Lab.model.Servicecontract;
+import de.hse.swa.SWA_Lab.model.Swauser;
 import de.hse.swa.SWA_Lab.resources.*;
+import de.hse.swa.SWA_Lab.dao.*;
 
 public class UsersResourceTest {
+
 	    private static UserDao u;
  private static Company company = null;
 

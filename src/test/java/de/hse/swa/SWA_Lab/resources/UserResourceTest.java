@@ -1,23 +1,32 @@
 package de.hse.swa.SWA_Lab.resources;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+import java.util.List;
+
+import de.hse.swa.SWA_Lab.dao.CompanyDao;
+import de.hse.swa.SWA_Lab.model.Company;
+import java.util.ArrayList;
+
+import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import de.hse.swa.SWA_Lab.PrepareTests;
-import de.hse.swa.SWA_Lab.dao.CompanyDao;
-import de.hse.swa.SWA_Lab.dao.UserDao;
-import de.hse.swa.SWA_Lab.model.Company;
+import de.hse.swa.SWA_Lab.model.Servicecontract;
 import de.hse.swa.SWA_Lab.model.Swauser;
 import de.hse.swa.SWA_Lab.resources.*;
+import de.hse.swa.SWA_Lab.dao.*;
 public class UserResourceTest {
+
 
     private static Swauser user;
     private static UserResource userResource;
@@ -77,4 +86,5 @@ public class UserResourceTest {
         thrown.expectMessage("Get: Swauser with " + user.getIduser() + " not found");
         userResource.getSwauserHTML(user.getIduser());
     }
+
 }

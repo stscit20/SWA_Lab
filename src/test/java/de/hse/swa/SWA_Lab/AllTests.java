@@ -26,6 +26,7 @@ import de.hse.swa.SWA_Lab.dao.*;
 		ServicecontractsResourceTest.class,
 		UserResourceTest.class,
 		UsersResourceTest.class
+
 })
 
 public class AllTests {

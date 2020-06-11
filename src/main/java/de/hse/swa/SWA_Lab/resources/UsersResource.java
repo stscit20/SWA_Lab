@@ -67,10 +67,11 @@ public class UsersResource extends Application{
 
   // This is the workhorse
   @POST
+  @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
   public void newUsers(List<Swauser> users){
-      for(Swauser user : users) {
-          UserDao.getInstance().saveSwauser(user);
-      }
+	  for(Swauser user : users) {
+		   UserDao.getInstance().saveSwauser(user);
+		 }
+  	}
   }
-}
