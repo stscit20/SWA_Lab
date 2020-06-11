@@ -19,11 +19,11 @@ public class CompaniesResource {
     Integer id;
 
 
-    public CompaniesResource(UriInfo uriInfo, Request request, Integer id) {
+    /*public CompaniesResource(UriInfo uriInfo, Request request, Integer id) {
         this.uriInfo = uriInfo;
         this.request = request;
         this.id = id;
-    }
+    }*/
 
 
     @POST
@@ -34,7 +34,6 @@ public class CompaniesResource {
         }
     }
 
-    /*	Just for test purposes.	*/
     @GET
     @Path("/getallcompanies")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

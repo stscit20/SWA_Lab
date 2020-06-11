@@ -20,15 +20,15 @@ public class UserResource {
 	Request request;
 	Integer id;
 
-	public UserResource(UriInfo uriInfo, Request request, Integer id) {
+	/*public UserResource(UriInfo uriInfo, Request request, Integer id) {
 		this.uriInfo = uriInfo;
 		this.request = request;
 		this.id = id;
-	}
+	}*/
 
 	//Application integration     
 	@GET
-	@Path("/{id}")
+	@Path("{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Swauser getSwauser(@PathParam("id") Integer id) {
 		Swauser user = UserDao.getInstance().getSwauser(id);
@@ -39,7 +39,7 @@ public class UserResource {
 
 	// for the browser
 	@GET
-	@Path("/{id}")
+	@Path("{id}")
 	@Produces(MediaType.TEXT_XML)
 	public Swauser getSwauserHTML(@PathParam("id") Integer id) {
 		Swauser user = UserDao.getInstance().getSwauser(id);
@@ -56,7 +56,7 @@ public class UserResource {
 	}
 
 	@DELETE
-	@Path("/{id}")
+	@Path("{id}")
 	public void deleteSwauser(@PathParam("id") Integer id) {
 		UserDao.getInstance().deleteSwauser(id);
 	}

@@ -72,14 +72,4 @@ public class UsersResource extends Application{
     UserDao.getInstance().saveSwauser(user);
     return UserDao.getInstance().getSwausers();
   }
-
-  // Defines that the next path parameter after users is
-  // treated as a parameter and passed to the UserResources
-  // Allows to type http://localhost:8080/Rest/rest/users/1
-  // 1 will be treaded as parameter and passed to UserResource
-  @Path("/{id}")
-  public UserResource getSwauser(@PathParam("id") Integer id) {
-    return new UserResource(uriInfo, request, id);
-  }
-
 } 

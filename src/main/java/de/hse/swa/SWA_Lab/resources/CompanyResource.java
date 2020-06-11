@@ -11,8 +11,6 @@ import javax.xml.bind.JAXBElement;
 import de.hse.swa.SWA_Lab.dao.CompanyDao;
 import de.hse.swa.SWA_Lab.model.Company;
 
-
-// -> Path -> /company/2
 @Path("/company")
 public class CompanyResource {
 	@Context
@@ -21,32 +19,32 @@ public class CompanyResource {
 	Request request;
 	Integer id;
 
-	public CompanyResource(UriInfo uriInfo, Request request, Integer id) {
+	/*public CompanyResource(UriInfo uriInfo, Request request, Integer id) {
 		this.uriInfo = uriInfo;
 		this.request = request;
 		this.id = id;
-	}
+	}*/
 
 	//Application integration     
 	@GET
-	@Path("/{id}")
+	@Path("{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Company getCompany(){
-		Company Company = CompanyDao.getInstance().getCompany(id);
-		if(Company==null)
+	public Company getCompany(@PathParam("id") Integer id){
+		Company company = CompanyDao.getInstance().getCompany(id);
+		if(company==null)
 			throw new RuntimeException("Get: Company with " + id +  " not found");
-		return Company;
+		return company;
 	}
 
 	// for the browser
 	@GET
-	@Path("/{id}")
+	@Path("{id}")
 	@Produces(MediaType.TEXT_XML)
-	public Company getCompanyHTML() {
-		Company Company = CompanyDao.getInstance().getCompany(id);
-		if(Company==null)
+	public Company getCompanyHTML(@PathParam("id") Integer id) {
+		Company company = CompanyDao.getInstance().getCompany(id);
+		if(company==null)
 			throw new RuntimeException("Get: Company with " + id +  " not found");
-		return Company;
+		return company;
 	}
 
 	@PUT
@@ -57,8 +55,8 @@ public class CompanyResource {
 	}
 
 	@DELETE
-	@Path("/{id}")
-	public void deleteCompany() {
+	@Path("{id}")
+	public void deleteCompany(@PathParam("id") Integer id) {
 		CompanyDao.getInstance().deleteCompany(id);
 	}
 
@@ -68,15 +66,16 @@ public class CompanyResource {
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
 	}
-	/*
+
 	@POST
+	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void changeCompany(){
+	public void changeCompany(@PathParam("id") Integer id){
 		if(CompanyDao.getInstance().getCompany(id) != null) {
 			CompanyDao.getInstance().deleteCompany(id);
 		}
 		Company c = new Company();
 		c.setIdcompany(id);
 		CompanyDao.getInstance().saveCompany(c);
-	}*/
+	}
 }
