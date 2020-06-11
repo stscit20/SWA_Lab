@@ -25,10 +25,10 @@ public class UsersResourceTest {
 	    @BeforeClass
 	    public static void setUpBeforeClass() throws Exception{
 	       	 PrepareTests.initDatabase();
-			 
+
 			 company = new Company();
 			 company.setCompanyname("TestCompany");
-			 
+
 			 CompanyDao.getInstance().saveCompany(company);
 
 	    }

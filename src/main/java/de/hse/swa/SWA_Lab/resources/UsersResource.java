@@ -73,4 +73,4 @@ public class UsersResource extends Application{
           UserDao.getInstance().saveSwauser(user);
       }
   }
-} 
+}

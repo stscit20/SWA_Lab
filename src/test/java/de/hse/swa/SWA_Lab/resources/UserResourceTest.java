@@ -18,7 +18,7 @@ import de.hse.swa.SWA_Lab.model.Company;
 import de.hse.swa.SWA_Lab.model.Swauser;
 import de.hse.swa.SWA_Lab.resources.*;
 public class UserResourceTest {
-	
+
     private static Swauser user;
     private static UserResource userResource;
     private static Company company;
@@ -37,9 +37,9 @@ public class UserResourceTest {
         PrepareTests.initDatabase();
 		company = new Company();
 	    company.setCompanyname("TestCompany");
-		 
+
 	    CompanyDao.getInstance().saveCompany(company);
-	    
+
 	    user = new Swauser();
         user.setUsername("Test");
         user.setPassword("12345");
@@ -77,5 +77,4 @@ public class UserResourceTest {
         thrown.expectMessage("Get: Swauser with " + user.getIduser() + " not found");
         userResource.getSwauserHTML(user.getIduser());
     }
-
 }

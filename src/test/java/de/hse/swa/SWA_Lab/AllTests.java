@@ -18,7 +18,6 @@ import de.hse.swa.SWA_Lab.dao.*;
 		SwauserDaoTest.class,
 		CompanyDaoTest.class,
 
-		
 		CompaniesResourceTest.class,
 		CompanyResourceTest.class,
 		LicenseResourceTest.class,
@@ -26,7 +25,7 @@ import de.hse.swa.SWA_Lab.dao.*;
 		ServicecontractResourceTest.class,
 		ServicecontractsResourceTest.class,
 		UserResourceTest.class,
-		UsersResourceTest.class,
+		UsersResourceTest.class
 })
 
 public class AllTests {
