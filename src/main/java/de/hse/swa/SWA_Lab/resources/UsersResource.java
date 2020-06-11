@@ -54,7 +54,6 @@ public class UsersResource extends Application{
   }
 
   // returns the number of users
-  // Use http://localhost:8080/Jodel/rest/users/count
   // to get the total number of records
   @GET
   @Path("/count")
