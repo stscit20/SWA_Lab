@@ -46,6 +46,8 @@ public class LicenseResourceTest {
         license.setLicensekey("asudezt7asftz");
         LicenseDao.getInstance().saveLicense(license);
 
+        licenseResource = new LicenseResource();
+
     }
 
     @AfterClass

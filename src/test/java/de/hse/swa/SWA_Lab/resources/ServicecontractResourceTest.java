@@ -74,7 +74,7 @@ private static Servicecontract servicecontract;
 	
 	@Test
 	public void testGetServicecontract(){
-		assertEquals(servicecontractresource.getServicecontract(1),servicecontract);
+		assertEquals(servicecontractresource.getServicecontract(servicecontract.getIdservicecontract()),servicecontract);
 	}
 	
 	@Test

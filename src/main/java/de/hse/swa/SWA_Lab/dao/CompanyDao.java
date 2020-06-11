@@ -44,7 +44,7 @@ public class CompanyDao {
 		Company company = em.find(Company.class, id);
 		if (company != null) {
 			em.getTransaction().begin();
-			em.refresh(CompanyDao.getInstance().getCompany(id));
+			em.remove(company);
 			em.getTransaction().commit();
 		}
 	}

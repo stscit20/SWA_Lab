@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
+import de.hse.swa.SWA_Lab.PrepareTests;
 import de.hse.swa.SWA_Lab.dao.CompanyDao;
 import de.hse.swa.SWA_Lab.model.Company;
 import de.hse.swa.SWA_Lab.model.Swauser;
@@ -30,11 +31,13 @@ public class CompanyResourceTest {
 
     @Before
     public void setUp() throws Exception{
-        Company company = new Company();
+        PrepareTests.initDatabase();
+        company = new Company();
         company.setAddress("Nicolas-Lange-Straße 2");
         company.setCompanyname("Nicolas Industries");
         company.setDepartment("9375");
         CompanyDao.getInstance().saveCompany(company);
+        companyResource = new CompanyResource();
     }
 
     @After
