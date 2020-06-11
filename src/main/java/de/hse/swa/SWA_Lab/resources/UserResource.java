@@ -1,10 +1,6 @@
 package de.hse.swa.SWA_Lab.resources;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -16,6 +12,7 @@ import javax.xml.bind.JAXBElement;
 import de.hse.swa.SWA_Lab.dao.UserDao;
 import de.hse.swa.SWA_Lab.model.Swauser;
 
+@Path("/users")
 public class UserResource {
 	@Context
 	UriInfo uriInfo;
@@ -31,8 +28,9 @@ public class UserResource {
 
 	//Application integration     
 	@GET
+	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Swauser getSwauser() {
+	public Swauser getSwauser(@PathParam("id") Integer id) {
 		Swauser user = UserDao.getInstance().getSwauser(id);
 		if(user==null)
 			throw new RuntimeException("Get: Swauser with " + id +  " not found");

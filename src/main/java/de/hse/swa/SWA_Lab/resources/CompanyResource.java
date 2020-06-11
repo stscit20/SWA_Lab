@@ -2,13 +2,7 @@ package de.hse.swa.SWA_Lab.resources;
 
 import java.util.List;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -37,21 +31,23 @@ public class CompanyResource {
 
 	//Application integration     
 	@GET
+	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Company getCompany(@QueryParam("Companyid") Integer Companyid) {
-		Company Company = CompanyDao.getInstance().getCompany(Companyid);
+	public Company getCompany(@PathParam("id") Integer id) {
+		Company Company = CompanyDao.getInstance().getCompany(id);
 		if(Company==null)
-			throw new RuntimeException("Get: Company with " + Companyid +  " not found");
+			throw new RuntimeException("Get: Company with " + id +  " not found");
 		return Company;
 	}
 
 	// for the browser
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.TEXT_XML)
-	public Company getCompanyHTML(@QueryParam("Companyid") Integer Companyid) {
-		Company Company = CompanyDao.getInstance().getCompany(Companyid);
+	public Company getCompanyHTML(@PathParam("id") Integer id) {
+		Company Company = CompanyDao.getInstance().getCompany(id);
 		if(Company==null)
-			throw new RuntimeException("Get: Company with " + Companyid +  " not found");
+			throw new RuntimeException("Get: Company with " + id +  " not found");
 		return Company;
 	}
 
@@ -63,8 +59,9 @@ public class CompanyResource {
 	}
 
 	@DELETE
-	public void deleteCompany(@QueryParam("Companyid") Integer Companyid) {
-		CompanyDao.getInstance().deleteCompany(Companyid);
+	@Path("/{id}")
+	public void deleteCompany(@PathParam("id") Integer id) {
+		CompanyDao.getInstance().deleteCompany(id);
 	}
 
 	@PUT
@@ -74,6 +71,14 @@ public class CompanyResource {
 		CompanyDao.getInstance().saveCompany(Company);
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
+	}
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void newCompanies(List<Company> companies){
+		for(Company company : companies) {
+			CompanyDao.getInstance().saveCompany(company);
+		}
 	}
 
 

@@ -36,7 +36,7 @@ public class CompanyDao {
 	
 	public void saveCompany(Company company) {
 		em.getTransaction().begin();
-		em.persist(company); // UNTIL HERE IT FAILS!
+		em.persist(company);
 		em.getTransaction().commit();
 	}
 	
