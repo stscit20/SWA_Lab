@@ -41,17 +41,17 @@ public class CompanyResource {
 	public Company getCompany(@QueryParam("Companyid") Integer Companyid) {
 		Company Company = CompanyDao.getInstance().getCompany(Companyid);
 		if(Company==null)
-			throw new RuntimeException("Get: Company with " + id +  " not found");
+			throw new RuntimeException("Get: Company with " + Companyid +  " not found");
 		return Company;
 	}
 
 	// for the browser
 	@GET
 	@Produces(MediaType.TEXT_XML)
-	public Company getCompanyHTML() {
-		Company Company = CompanyDao.getInstance().getCompany(2);
+	public Company getCompanyHTML(@QueryParam("Companyid") Integer Companyid) {
+		Company Company = CompanyDao.getInstance().getCompany(Companyid);
 		if(Company==null)
-			throw new RuntimeException("Get: Company with " + id +  " not found");
+			throw new RuntimeException("Get: Company with " + Companyid +  " not found");
 		return Company;
 	}
 
@@ -63,17 +63,21 @@ public class CompanyResource {
 	}
 
 	@DELETE
-	public void deleteCompany() {
-		CompanyDao.getInstance().deleteCompany(id);
+	public void deleteCompany(@QueryParam("Companyid") Integer Companyid) {
+		CompanyDao.getInstance().deleteCompany(Companyid);
 	}
 
-	private Response putAndGetResponse(Company Company) {
+	@PUT
+	@Consumes(MediaType.APPLICATION_XML)
+	public Response putAndGetResponse(Company Company) {
 		Response res;
 		CompanyDao.getInstance().saveCompany(Company);
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
 	}
-	
+
+
+	/*	Just for test purposes.	*/
 	@GET
 	@Path("/getallcompanies")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
