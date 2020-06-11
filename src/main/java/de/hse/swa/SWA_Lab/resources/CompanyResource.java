@@ -81,6 +81,18 @@ public class CompanyResource {
 		}
 	}
 
+	@POST
+	@Path("/changeCompany/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void changeCompany(@PathParam("id") Integer id){
+		if(CompanyDao.getInstance().getCompany(id) != null) {
+			CompanyDao.getInstance().deleteCompany(id);
+		}
+		Company c = new Company();
+		c.setIdcompany(id);
+		CompanyDao.getInstance().saveCompany(c);
+	}
+
 
 	/*	Just for test purposes.	*/
 	@GET
