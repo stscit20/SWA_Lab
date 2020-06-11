@@ -1,11 +1,6 @@
 package de.hse.swa.SWA_Lab.resources;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -16,6 +11,9 @@ import javax.xml.bind.JAXBElement;
 import de.hse.swa.SWA_Lab.dao.CompanyDao;
 import de.hse.swa.SWA_Lab.model.Company;
 
+
+// -> Path -> /company/2
+@Path("/company")
 public class CompanyResource {
 	@Context
 	UriInfo uriInfo;
@@ -31,6 +29,7 @@ public class CompanyResource {
 
 	//Application integration     
 	@GET
+	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Company getCompany(){
 		Company Company = CompanyDao.getInstance().getCompany(id);
@@ -41,6 +40,7 @@ public class CompanyResource {
 
 	// for the browser
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.TEXT_XML)
 	public Company getCompanyHTML() {
 		Company Company = CompanyDao.getInstance().getCompany(id);
@@ -57,6 +57,7 @@ public class CompanyResource {
 	}
 
 	@DELETE
+	@Path("/{id}")
 	public void deleteCompany() {
 		CompanyDao.getInstance().deleteCompany(id);
 	}
