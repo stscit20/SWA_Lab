@@ -49,8 +49,8 @@ public class CompanyResource {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response putCompany(JAXBElement<Company> Company) {
-		Company c = Company.getValue();
+	public Response putCompany(JAXBElement<Company> company) {
+		Company c = company.getValue();
 		return putAndGetResponse(c);
 	}
 
@@ -60,9 +60,9 @@ public class CompanyResource {
 		CompanyDao.getInstance().deleteCompany(id);
 	}
 
-	private Response putAndGetResponse(Company Company) {
+	private Response putAndGetResponse(Company company) {
 		Response res;
-		CompanyDao.getInstance().saveCompany(Company);
+		CompanyDao.getInstance().saveCompany(company);
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
 	}

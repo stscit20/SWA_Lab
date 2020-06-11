@@ -53,4 +53,12 @@ public class CompaniesResource {
             throw new RuntimeException("No Company found!");
         return companies;
     }
+
+    @GET
+    @Path("/count")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getCount() {
+        int count = CompanyDao.getInstance().getCompanies().size();
+        return String.valueOf(count);
+    }
 }
