@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,6 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -26,7 +28,8 @@ import de.hse.swa.SWA_Lab.model.Swauser;
 
 // Will map the resource to the URL users
 @Path("/users")
-public class UsersResource {
+@ApplicationPath("/apiv2")
+public class UsersResource extends Application{
 
 	
   // Allows to insert contextual objects into the class,
