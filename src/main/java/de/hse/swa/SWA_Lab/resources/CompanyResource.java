@@ -66,7 +66,7 @@ public class CompanyResource {
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
 	}
-
+	/*
 	@POST
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -77,5 +77,5 @@ public class CompanyResource {
 		Company c = new Company();
 		c.setIdcompany(id);
 		CompanyDao.getInstance().saveCompany(c);
-	}
+	}*/
 }
