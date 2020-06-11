@@ -12,7 +12,7 @@ import javax.xml.bind.JAXBElement;
 import de.hse.swa.SWA_Lab.dao.UserDao;
 import de.hse.swa.SWA_Lab.model.Swauser;
 
-@Path("/users")
+@Path("/user")
 public class UserResource {
 	@Context
 	UriInfo uriInfo;
@@ -39,8 +39,9 @@ public class UserResource {
 
 	// for the browser
 	@GET
+	@Path("/{id}")
 	@Produces(MediaType.TEXT_XML)
-	public Swauser getSwauserHTML() {
+	public Swauser getSwauserHTML(@PathParam("id") Integer id) {
 		Swauser user = UserDao.getInstance().getSwauser(id);
 		if(user==null)
 			throw new RuntimeException("Get: Swauser with " + id +  " not found");
@@ -55,7 +56,8 @@ public class UserResource {
 	}
 
 	@DELETE
-	public void deleteSwauser() {
+	@Path("/{id}")
+	public void deleteSwauser(@PathParam("id") Integer id) {
 		UserDao.getInstance().deleteSwauser(id);
 	}
 
