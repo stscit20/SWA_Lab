@@ -28,7 +28,7 @@ public class UserDao {
 	}
 	
 	public List<Swauser> getUsersByCompanyId(Integer id){
-		Query q = em.createQuery("select u from swauser u where u.company_idcompany = :cid");
+		Query q = em.createQuery("select u from Swauser u where u.company_idcompany = :cid");
 		q.setParameter("cid", CompanyDao.getInstance().getCompany(id));
 		List<Swauser> users = q.getResultList();
 		return users;
@@ -53,5 +53,20 @@ public class UserDao {
 			em.remove(cm);
 			em.getTransaction().commit();
 		}
+	}
+
+	public List<Swauser> getUsersByUsername(String name){
+		Query q = em.createQuery("select u from Swauser u where u.username = :uname");
+		q.setParameter("uname", name);
+		List<Swauser> users = q.getResultList();
+		return users;
+	}
+
+	public Swauser getLoggedUser(String name, String password){
+		Query q = em.createQuery("select u from Swauser u where u.username = :uname and u.password = :password");
+		q.setParameter("uname", name);
+		q.setParameter("password", password);
+		Swauser user = (Swauser) q.getResultList().get(0);
+		return user;
 	}
 }

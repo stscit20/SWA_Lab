@@ -1,5 +1,6 @@
 package de.hse.swa.SWA_Lab.resources;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -11,6 +12,10 @@ import javax.xml.bind.JAXBElement;
 
 import de.hse.swa.SWA_Lab.dao.UserDao;
 import de.hse.swa.SWA_Lab.model.Swauser;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Path("/user")
 public class UserResource {
@@ -66,5 +71,16 @@ public class UserResource {
 		UserDao.getInstance().saveSwauser(user);
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
+	}
+
+	@POST
+	@Path("login")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> userLogin(Swauser user, @Context HttpServletResponse servletResponse){
+		Swauser checkUser = UserDao.getInstance().getLoggedUser(user.getUsername(), user.getPassword());
+		Map<String, Object> response = new HashMap<>();
+		response.put("success", true);
+		response.put("user", checkUser);
+		return response;
 	}
 }
