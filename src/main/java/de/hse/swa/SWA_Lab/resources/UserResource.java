@@ -77,8 +77,6 @@ public class UserResource {
 	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Map<String, Object> userLogin(Swauser user, @Context HttpServletResponse servletResponse){
-		System.out.println("Fuck the system");
-		System.out.println(user);
 		Swauser checkUser = UserDao.getInstance().getLoggedUser(user.getUsername(), user.getPassword());
 		Map<String, Object> response = new HashMap<>();
 		response.put("success", checkUser != null);
