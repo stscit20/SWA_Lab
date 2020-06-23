@@ -27,17 +27,19 @@ class App extends React.Component{
 
             var data = JSON.stringify(user);
             this.setState({showLoadingScreen: true});
-            fetch(Context+"/user/login", {
-               headers: {
-                   'Context-Type': 'application/json',
-                   'Accept': 'application/json'
-               },
-                method: 'post',
-                body: data
-            })
-            .then(this.status)
-            .then(this.parseJson)
-            .then(this.handleResponse.bind(this))
+            var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "http://localhost:8080/SWA_Lab/apiv2/user/login", false);
+            xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+	    xhr.send(data);
+	    console.log(JSON.parse(xhr.response));
+	    let responser = JSON.parse(xhr.response);
+	    if(responser.success){
+		User.user = responser.user;
+		this.setState({loggedIn:true, showLoadingScreen: false});
+		return;
+	    }else{
+		this.setState({loggedIn:false, autoLogin: true, showLoadingScreen: false});
+	    }
         }
     }
 
@@ -74,16 +76,7 @@ class App extends React.Component{
     }
 
     showLoadingScreen() {
-        return <div className={styles.spinnerContainer}>
-            <div className={styles.spinner}>
-                <div className={styles.rect1}></div>
-                <div className={styles.rect2}></div>
-                <div className={styles.rect3}></div>
-                <div className={styles.rect4}></div>
-                <div className={styles.rect5}></div>
-            </div>
-            <div>Logging you in...</div>
-        </div>;
+        return <div> Und ich Flieg </div>;
     }
 
     render () {
@@ -93,9 +86,12 @@ class App extends React.Component{
             </div>;
         }
         else {
+        if(this.state.loggedIn){
+        	return <div>OK</div>
+        }else{
             if(this.state.autoLogin) {
                 return (
-                    <div style={{"display":"none"}}>
+                    <div>
 
                         <h3>Username</h3>
                         <input type="text"
@@ -106,7 +102,7 @@ class App extends React.Component{
                                 id="password"
                         />
                         <input type="button"
-                               onClick="loginCallBack"
+                               onClick={this.loginCallBack.bind(this)}
                         />
                     </div>
                 );
@@ -125,12 +121,13 @@ class App extends React.Component{
                                    name="Password"
                             />
                             <input type="button"
-                                   onClick="loginCallBack"
+                                   onClick={this.loginCallBack.bind(this)}
                             />
                         </div>
                     </div>
                 );
             }
+          }
         }
 
     }

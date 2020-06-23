@@ -66,7 +66,11 @@ public class UserDao {
 		Query q = em.createQuery("select u from Swauser u where u.username = :uname and u.password = :password");
 		q.setParameter("uname", name);
 		q.setParameter("password", password);
-		Swauser user = (Swauser) q.getResultList().get(0);
+		Swauser user = null;
+		if(q.getResultList().size()>0) {
+			user = (Swauser) q.getResultList().get(0);
+		}
+				
 		return user;
 	}
 }
