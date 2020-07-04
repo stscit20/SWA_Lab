@@ -1,12 +1,24 @@
 import React from 'react';
 import {render} from 'react-dom';
 import User from './user.jsx';
-
+import Company from './company.jsx';
 class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = { loggedIn:false, autoLogin: true, showLoadingScreen: false };
         this.userLogin = this.userLogin.bind(this);
+       
+    }
+
+companyList(response){
+			
+      	var xhr = new XMLHttpRequest();
+	    xhr.open("GET", "http://localhost:8080/SWA_Lab/apiv2/companies/getallcompanies", false);
+        xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+        xhr.send();      
+	  	console.log(JSON.parse(xhr.response));
+	    let responser = JSON.parse(xhr.response);
+	    return responser;
     }
 
     userLogin(response){
@@ -87,8 +99,27 @@ class App extends React.Component{
         }
         else {
         if(this.state.loggedIn){
-        	return <div>OK</div>
-        }else{
+        
+     const datalist= this.companyList().map((item,key) => 
+      //  <li key={item.idcompany}>CompanyId:{item.idcompany}</li>
+       
+     <li key={item.idcompany}>CompanyId:{item.idcompany} 
+    						  Address:{item.address} 
+    						  CompanyName:{item.companyname}  
+        					  Department:{item.department}			</li>
+                  
+              
+     ); 
+     console.log(datalist); 
+   return(  <div>
+         <ul>
+         {datalist}
+         </ul>
+       </div> 
+       ); 
+    }
+   
+        else{
             if(this.state.autoLogin) {
                 return (
                     <div>

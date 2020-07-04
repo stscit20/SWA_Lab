@@ -59,7 +59,7 @@ public class CompanyResource {
 	public void deleteCompany(@PathParam("id") Integer id) {
 		CompanyDao.getInstance().deleteCompany(id);
 	}
-
+    @POST
 	private Response putAndGetResponse(Company company) {
 		Response res;
 		CompanyDao.getInstance().saveCompany(company);

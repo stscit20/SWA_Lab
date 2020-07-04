@@ -1,0 +1,56 @@
+{
+  "name": "Jodel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "ajv": "^6.6.1",
+    "autoprefixer": "^9.4.2",
+    "coveralls": "^3.0.2",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "node-sass": "^4.10.0",
+    "nyc": "^13.1.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.3",
+    "react-facebook-login": "^3.6.2",
+    "remarkable": "^1.7.1",
+    "sass-loader": "^7.1.0",
+    "selectric": "^1.13.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "mocha": "^5.2.0",
+    "react-hot-loader": "^4.3.12",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "test": "mocha",
+    "dev": "webpack  --config ./webpack.config.js --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}
