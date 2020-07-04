@@ -36,7 +36,7 @@ companyList(response){
 	   xhr.send(data);
 	   console.log(JSON.parse(xhr.response));
 	   
-	   this.setState({created:true, showLoadingScreen: false});
+	this.setState({loggedIn:true, showLoadingScreen: false});
 	 
         
     }
@@ -74,7 +74,6 @@ companyList(response){
 	    }
         }
     }
-
     loginCallBack(){
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
@@ -119,6 +118,8 @@ companyList(response){
         return <div> Und ich Flieg </div>;
     }
 
+
+
     render () {
         if(this.state.showLoadingScreen) {
             return <div>
@@ -127,20 +128,22 @@ companyList(response){
         }
         else {
         if(this.state.loggedIn){
+  
+  
+   
+  
+    const datalist= this.companyList().map((item,key) => 
+  
         
-     const datalist= this.companyList().map((item,key) => 
-      //  <li key={item.idcompany}>CompanyId:{item.idcompany}</li>
-       
-     <li key={item.idcompany}>CompanyId:{item.idcompany} 
+         <li key={item.idcompany}>CompanyId:{item.idcompany} 
     						  Address:{item.address} 
     						  CompanyName:{item.companyname}  
         					  Department:{item.department}			</li>
                   
               
      ); 
-     console.log(datalist); 
-   return( 
-   		 <div>
+    return(
+    <div>
          <ul>
          {datalist}
          </ul>
@@ -165,54 +168,10 @@ companyList(response){
        </div>
      );
      
-    
-    }
-    //                        //
-    
-     if(this.state.created){
-     
-     
-      const datalist= this.companyList().map((item,key) => 
-      //  <li key={item.idcompany}>CompanyId:{item.idcompany}</li>
-       
-     <li key={item.idcompany}>CompanyId:{item.idcompany} 
-    						  Address:{item.address} 
-    						  CompanyName:{item.companyname}  
-        					  Department:{item.department}			</li>
-                  
-              
-     ); 
-     console.log(datalist); 
-   return( 
-   		 <div>
-         <ul>
-         {datalist}
-         </ul>
-  
-         <h3>Companyname</h3>
-               <input type="text"
-               id="companyname"
-                />
-          <h3>Address</h3>
-               <input type="text"
-                  id="address"
-                />
-                        
-         <h3>Department</h3>
-               <input type="text"
-                  id="department"
-            />   
-          <input type="button"
-               onClick={this.companyCallBack.bind(this)}
-              
-          />
-       </div>
-     );
-    }
    
       
-      
-      
+}
+    //                        //
       
       
       
