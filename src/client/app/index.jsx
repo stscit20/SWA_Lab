@@ -20,6 +20,26 @@ companyList(response){
 	    let responser = JSON.parse(xhr.response);
 	    return responser;
     }
+    
+    
+ companyCreate(response){
+       console.log(response);
+          var company = {};
+           company["companyname"] = response["companyname"];
+            company["address"] = response["address"];
+			company["department"] = response["department"];	
+           var data = JSON.stringify(company);
+           
+            var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "http://localhost:8080/SWA_Lab/apiv2/company/create", false);
+           xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+	   xhr.send(data);
+	   console.log(JSON.parse(xhr.response));
+	   
+	   this.setState({created:true, showLoadingScreen: false});
+	 
+        
+    }
 
     userLogin(response){
         console.log(response);
@@ -60,6 +80,14 @@ companyList(response){
         let password = document.getElementById("password").value;
 
         this.userLogin({username: username, password: password});
+
+    }
+    companyCallBack(){
+        let companyname = document.getElementById("companyname").value;
+        let companyaddress = document.getElementById("address").value;
+        let department    =document.getElementById("department").value;
+
+        this.companyCreate({companyname: companyname, companyaddress: address, department: department});
 
     }
 
@@ -111,14 +139,87 @@ companyList(response){
               
      ); 
      console.log(datalist); 
-   return(  <div>
+   return( 
+   		 <div>
          <ul>
          {datalist}
          </ul>
-       </div> 
-       ); 
+  
+         <h3>Companyname</h3>
+               <input type="text"
+               id="companyname"
+                />
+          <h3>Address</h3>
+               <input type="text"
+                  id="address"
+                />
+                        
+         <h3>Department</h3>
+               <input type="text"
+                  id="department"
+            />   
+          <input type="button"
+               onClick={this.companyCallBack.bind(this)}
+              
+          />
+       </div>
+     );
+     
+    
+    }
+    //                        //
+    
+     if(this.state.created){
+     
+     
+      const datalist= this.companyList().map((item,key) => 
+      //  <li key={item.idcompany}>CompanyId:{item.idcompany}</li>
+       
+     <li key={item.idcompany}>CompanyId:{item.idcompany} 
+    						  Address:{item.address} 
+    						  CompanyName:{item.companyname}  
+        					  Department:{item.department}			</li>
+                  
+              
+     ); 
+     console.log(datalist); 
+   return( 
+   		 <div>
+         <ul>
+         {datalist}
+         </ul>
+  
+         <h3>Companyname</h3>
+               <input type="text"
+               id="companyname"
+                />
+          <h3>Address</h3>
+               <input type="text"
+                  id="address"
+                />
+                        
+         <h3>Department</h3>
+               <input type="text"
+                  id="department"
+            />   
+          <input type="button"
+               onClick={this.companyCallBack.bind(this)}
+              
+          />
+       </div>
+     );
     }
    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
         else{
             if(this.state.autoLogin) {
                 return (
@@ -157,6 +258,7 @@ companyList(response){
                         </div>
                     </div>
                 );
+                
             }
           }
         }

@@ -1,5 +1,12 @@
 package de.hse.swa.SWA_Lab.resources;
 
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -9,7 +16,9 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 import de.hse.swa.SWA_Lab.dao.CompanyDao;
+import de.hse.swa.SWA_Lab.dao.UserDao;
 import de.hse.swa.SWA_Lab.model.Company;
+import de.hse.swa.SWA_Lab.model.Swauser;
 
 @Path("/company")
 public class CompanyResource {
@@ -66,7 +75,28 @@ public class CompanyResource {
 		res = Response.created(uriInfo.getAbsolutePath()).build();
 		return res;
 	}
-	/*
+    
+    
+    @POST
+    @Path("/create")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Map<String, Object> companyCreate(Company company, @Context HttpServletResponse servletResponse){
+		Company company1 = new Company();
+		    company1.setCompanyname(company.getCompanyname());		
+		    company1.setAddress(company.getAddress());
+		    company1.setDepartment(company.getDepartment());
+		    
+		    CompanyDao.getInstance().saveCompany(company1);
+		
+		    
+		Map<String, Object> response = new HashMap<>();
+		response.put("success", company1 != null);
+		response.put("company", company1);
+		return response;
+	}
+		
+		
+		/*
 	@POST
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
