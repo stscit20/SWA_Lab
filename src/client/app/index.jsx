@@ -40,7 +40,24 @@ companyList(response){
 	 
         
     }
-
+deletecompany(response){
+       console.log(response);
+          var company = {};
+           company["idcompany"] = response["idcompany"];
+            
+           var data = JSON.stringify(company);
+           
+           var xhrr="http://localhost:8080/SWA_Lab/apiv2/company/"+company["idcompany"]
+            var xhr = new XMLHttpRequest();
+	    xhr.open("DELETE", xhrr, false);
+           xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+	   xhr.send(data);
+	   
+	   
+	this.setState({loggedIn:true, showLoadingScreen: false});
+	 
+        
+    }
     userLogin(response){
         console.log(response);
 
@@ -88,6 +105,12 @@ companyList(response){
 
         this.companyCreate({companyname: companyname, companyaddress: address, department: department});
 
+    }
+    
+    deletecompanyCallBack(){
+    
+    let idcompany=document.getElementById("idcompany").value;
+     this.deletecompany({idcompany:idcompany});
     }
 
     status(response) {
@@ -165,6 +188,16 @@ companyList(response){
                onClick={this.companyCallBack.bind(this)}
               
           />
+          
+          <h3>Delete Company</h3>
+          <input type="text"
+          			id="idcompany"
+          			/>
+          <input type="button"
+              onClick={this.deletecompanyCallBack.bind(this)}
+              />
+          
+          
        </div>
      );
      
