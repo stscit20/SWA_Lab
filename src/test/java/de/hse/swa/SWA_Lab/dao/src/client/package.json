@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "ajv": "^6.6.1",
+    "ajv": "^6.12.3",
     "autoprefixer": "^9.4.2",
     "coveralls": "^3.0.2",
     "css-loader": "^1.0.1",
